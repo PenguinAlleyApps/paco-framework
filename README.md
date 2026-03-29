@@ -137,12 +137,24 @@ Any agent in a HALTED department stops immediately. Only the CEO can halt/resume
 
 ## Templates
 
+### Free Templates (included in repo)
+
 | Template | Agents | Best for |
 |----------|--------|----------|
 | `solo-founder` | 4 (orchestrator, builder, devops, marketer) | Solo builders shipping fast |
-| `startup` | 8 (adds QA, security, researcher, strategist) | Small teams with product-market fit goals |
-| `full-team` | 16 (all departments) | Mature operations with governance |
-| `agency` | Customizable per client | Agencies managing multiple projects |
+| `startup` | 8 (adds QA, researcher, strategist, sales) | Small teams with product-market fit goals |
+
+### Premium Templates
+
+Industry-specific templates with specialized agents, workflows, and dispatch patterns.
+
+| Template | Agents | Price | Get it |
+|----------|--------|-------|--------|
+| **Agency** | 6 (multi-client coordination) | $99 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/rjihs) |
+| **E-Commerce** | 6 (inventory, support, analytics) | $79 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/jvsfza) |
+| **Content Studio** | 5 (writer, editor, SEO, social) | $49 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/ffpnl) |
+| **Dev Team** | 6 (code review, QA, security, DevOps) | $79 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/mexvb) |
+| **Complete Bundle** | All 4 + future templates | $249 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/weome) |
 
 ## Comparison
 
