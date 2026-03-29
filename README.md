@@ -199,4 +199,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 
 ---
 
-**Built by [Penguin Alley](https://penguinalley.com)** — "An easier way to build."
+**Built by [Penguin Alley](https://penguinalley.com)** — "An easier way to live."
