@@ -44,7 +44,7 @@ Turn your Claude Code instance into an autonomous team of AI agents that coordin
 
 ## What is PA·co?
 
-PA·co (Project Autonomous Commander/Officer) is a framework for building multi-agent AI systems using only markdown files. Define agents, set up coordination, and let Claude Code run your operations autonomously.
+PA·co (Penguin Alley Commander/Officer) is a framework for building multi-agent AI systems using only markdown files. Define agents, set up coordination, and let Claude Code run your operations autonomously.
 
 **No code. No databases. No message queues. Just markdown.**
 
