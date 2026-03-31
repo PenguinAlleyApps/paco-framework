@@ -2,6 +2,14 @@
 
 All notable changes to PA·co Framework will be documented in this file.
 
+## [2.1.0] — 2026-04-01 — Schedule System
+
+### Added
+- **Schedule schema** (`core/schedule-schema.md`) — complete guide for time-triggered agent activations: work-hours schedules, 24/7 automation with smart skip logic, weekly maintenance, Build↔QA alternation pattern, Week A/B sprint cycle, and execution environment options (Claude Code scheduler, cron, GitHub Actions)
+
+### Context
+The v2 README promised "24/7 autonomous operations" and "19 schedules" but shipped no schedule documentation. This release fills that gap with battle-tested patterns from PA·co's own production schedule system.
+
 ## [2.0.0] — 2026-03-31 — v2 Architecture Update
 
 ### Added
