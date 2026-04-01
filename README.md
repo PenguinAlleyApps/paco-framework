@@ -1,6 +1,6 @@
 # PA·co Framework
 
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-Required-blue.svg)
 ![Status](https://img.shields.io/badge/Status-v2.0-brightgreen.svg)
 ![Agents](https://img.shields.io/badge/Agents-3_to_16+-purple.svg)
@@ -273,7 +273,11 @@ Every pattern in this framework comes from real production experience. The 7-pha
 
 ## License
 
-MIT -- use it however you want.
+AGPL-3.0 — open source, free to use, modify, and distribute.
+
+If you modify PA·co Framework and offer it as a service, you must share your changes under the same license. This keeps the ecosystem open and fair.
+
+For commercial use without AGPL obligations (e.g., proprietary products, enterprise deployments where sharing source is not an option), contact hello@penguinalley.com for a commercial license.
 
 ## Contributing
 
