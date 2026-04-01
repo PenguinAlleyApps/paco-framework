@@ -5,71 +5,53 @@
 ![Status](https://img.shields.io/badge/Status-v2.0-brightgreen.svg)
 ![Agents](https://img.shields.io/badge/Agents-3_to_16+-purple.svg)
 
-**The markdown-first, zero-code multi-agent operations system for Claude Code.**
+## What is PA·co Framework?
 
-Turn your Claude Code instance into an autonomous team of AI agents that coordinate, learn, and evolve — without writing a single line of Python.
+**PA·co Framework is a markdown-first, zero-code multi-agent operations system for Claude Code.** It enables 3-16 specialized AI agents to coordinate via file-based state management, maintain institutional memory through 4-layer Context Engineering, and operate autonomously with human oversight -- without writing a single line of Python.
+
+PA·co stands for **P**enguin **A**lley **Co**mmander/Officer. It transforms a Claude Code instance into an autonomous team of AI agents that coordinate, learn, and evolve using only markdown files.
+
+### How PA·co Framework Works
+
+PA·co uses a file-based architecture where each AI agent reads markdown files to understand its role, the current system state, and what work needs to be done. Agents coordinate through shared state files rather than message passing:
 
 ```
-                         ┌─────────────┐
-                         │     CEO     │
-                         │  (You)      │
-                         └──────┬──────┘
-                                │ halt / resume / approve
-                         ┌──────▼──────┐
-                         │   PA·co     │
-                         │ Orchestrator│ ← 4-layer context
-                         └──────┬──────┘
-                 ┌──────────────┼──────────────┐
-                 │              │              │
-          ┌──────▼──────┐ ┌────▼────┐ ┌───────▼──────┐
-          │ Engineering │ │  Q & S  │ │ Intelligence │ ...
-          │             │ │         │ │              │
-          │ Builder     │ │ QA      │ │ Researcher   │
-          │ Designer    │ │ Auditor │ │ Strategist   │
-          └──────┬──────┘ └────┬────┘ └───────┬──────┘
-                 │              │              │
-          products/        state/          catalogs/
-          {name}/STATE     PIPELINE.md     sectors.md
-                           HALT.md         tech-stacks.md
-                 └──────────────┼──────────────┘
-                                │
-                    ┌───────────▼───────────┐
-                    │  Context Engineering  │
-                    │  4 Layers: Identity → │
-                    │  State → Relevant →   │
-                    │  Archive (pgvector)   │
-                    └──────────────────────┘
+                         +---------------+
+                         |     CEO       |
+                         |   (Human)     |
+                         +-------+-------+
+                                 | halt / resume / approve
+                         +-------v-------+
+                         |    PA-co      |
+                         | Orchestrator  | <- 4-layer context
+                         +-------+-------+
+                 +---------------+---------------+
+                 |               |               |
+          +------v------+ +-----v-----+ +-------v------+
+          | Engineering | |   Q & S   | | Intelligence | ...
+          |             | |           | |              |
+          | Builder     | | QA        | | Researcher   |
+          | Designer    | | Auditor   | | Strategist   |
+          +------+------+ +-----+-----+ +-------+------+
+                 |               |               |
+          products/         state/          catalogs/
+          {name}/STATE      PIPELINE.md     sectors.md
+                            HALT.md         tech-stacks.md
 ```
+
+### Key Capabilities
+
+| Capability | Description |
+|-----------|-------------|
+| **Multi-agent coordination** | 3-16 specialized AI agents organized into departments, each with clear roles, jurisdictions, and handoff protocols |
+| **7-phase product workflow** | Structured pipeline from Research to Refine to Post-Refine to CEO Gate to Develop to Deploy to Evolve |
+| **4-layer Context Engineering** | Identity, State, Relevant, Archive -- ensures every agent session receives precisely the context it needs |
+| **Quality gates** | Mandatory checks at every phase transition, preventing defects from propagating |
+| **Emergency halt system** | Instantly pause any product or all operations with a single markdown edit |
+| **Human-in-the-loop governance** | CEO approval gates for critical decisions; agents operate autonomously within defined boundaries |
+| **Zero-code setup** | Everything is configured through markdown files -- no Python, no YAML configs, no infrastructure code |
 
 ---
-
-## What is PA·co?
-
-PA·co (Penguin Alley Commander/Officer) is a framework for building multi-agent AI systems using only markdown files. Define agents, set up coordination, and let Claude Code run your operations autonomously.
-
-**No code. No databases required. Just markdown.**
-
-```
-You get:
-- 3-16 specialized AI agents with clear roles
-- A 7-phase product workflow (Research → Evolve)
-- 4-layer Context Engineering for perfect agent memory
-- Quality gates that catch mistakes before you see them
-- An emergency halt system so you stay in control
-- Scheduled tasks for 24/7 autonomous operations
-- Optional: pgvector for semantic knowledge retrieval
-```
-
-## Why PA·co?
-
-| Problem | PA·co Solution |
-|---------|---------------|
-| AI agents step on each other's work | **State management** — product-centric coordination with Build↔QA alternation |
-| Agents repeat the same mistakes | **4-layer Context Engineering** — knowledge persists and surfaces when relevant |
-| Can't stop agents when things go wrong | **HALT system** — pause any product or all operations instantly |
-| No quality control on agent output | **Quality gates** — every phase transition has mandatory checks |
-| No structure for going from idea to shipped product | **7-phase workflow** — Research → Refine → Post-Refine → CEO Gate → Develop → Deploy → Evolve |
-| Setup requires Python/code expertise | **Zero code** — everything is markdown files |
 
 ## Quick Start
 
@@ -80,42 +62,48 @@ You get:
    ```
 3. Answer 5-7 questions about your project
 4. PA·co generates your entire multi-agent system
-5. Run your first standup: "Run as /paco — execute daily standup"
+5. Run your first standup: `Run as /paco -- execute daily standup`
 
-## Architecture: v2
+Full setup guide: [docs/getting-started.md](docs/getting-started.md)
 
-### 7-Phase Workflow
+---
 
-Every product goes through the full workflow. No shortcuts.
+## Architecture
+
+### 7-Phase Product Workflow
+
+Every product goes through the full workflow. No shortcuts, no skipped phases.
 
 ```
-RESEARCH → REFINE → POST-REFINE → CEO GATE → DEVELOP → DEPLOY → EVOLVE
+RESEARCH -> REFINE -> POST-REFINE -> CEO GATE -> DEVELOP -> DEPLOY -> EVOLVE
 ```
 
-| Phase | Purpose | Gatekeeper |
-|-------|---------|------------|
-| Research | Find problems, not solutions | PA·co |
-| Refine | All departments enrich in parallel | PA·co |
-| Post-Refine | Audit specs. Fix or kill. | Auditor |
-| CEO Gate | Human approval required | CEO |
-| Develop | Build from specs. No improvisation. | QA + Security |
-| Deploy | Ship, scan, verify | CEO |
-| Evolve | Health reviews, iteration, defense | Auditor (biweekly) |
+| Phase | What happens | Gatekeeper |
+|-------|-------------|------------|
+| **Research** | Find problems worth solving. Scan market sectors. Output: specification template. | PA·co |
+| **Refine** | All departments enrich the spec in parallel. Engineering defines the solution. Each agent asks minimum 10 questions with mandatory web search. | PA·co |
+| **Post-Refine** | Auditor reviews all specs. Fix issues or kill the product. | Auditor |
+| **CEO Gate** | Human approves, rejects, or defers. No product advances without human approval. | CEO |
+| **Develop** | Builder + Designer build from specs. No improvisation. Build/QA alternation enforced. | QA + Security |
+| **Deploy** | Ship to production. Security scan. Health verification. | CEO |
+| **Evolve** | Continuous improvement: health reviews, competitive defense, feature iteration. | Auditor (biweekly) |
 
-See [core/workflow-schema.md](core/workflow-schema.md) for full details.
+See [core/workflow-schema.md](core/workflow-schema.md) for the full schema.
 
 ### 4-Layer Context Engineering
 
-Every agent session receives precisely the context it needs:
+Context Engineering is the core innovation of PA·co Framework. It solves the fundamental problem of multi-agent AI systems: how does each agent get the right information at the right time without exceeding context limits?
 
-| Layer | What | Example |
-|-------|------|---------|
-| **Identity** | CLAUDE.md + agent definition + catalogs | "You are the Builder. Here are org rules." |
-| **State** | Product STATE.md + Pipeline + Today's dispatch | "Product X is in Develop. QA passed. Your turn." |
-| **Relevant** | Semantic search from vector DB | "Last time we deployed, CSP headers were missing." |
-| **Archive** | Everything else in vector DB | Available if search queries change |
+| Layer | What it provides | Source | Lifecycle |
+|-------|-----------------|--------|-----------|
+| **Identity** | CLAUDE.md + agent definition + role catalogs | Repository files | Read-only per session |
+| **State** | Product STATE.md + Pipeline + today's dispatch | `state/`, `products/*/` | Rewritten every session |
+| **Relevant** | Semantic search results from vector database | pgvector (Supabase) | ~5-10 results per query |
+| **Archive** | All historical knowledge not returned by search | Vector database | Grows indefinitely |
 
-See [core/context-engineering.md](core/context-engineering.md) for full details.
+**Same agent + different context = different behavior per product.** Agent definitions are generic; `products/{name}/` directories make them product-specific.
+
+See [core/context-engineering.md](core/context-engineering.md) for the full specification.
 
 ### State Management
 
@@ -123,22 +111,24 @@ Products track their own state. A global pipeline tracks all products.
 
 ```
 state/
-  PIPELINE.md        — All products and phases
-  HALT.md            — Emergency stop
-  CEO_BLOCKERS.md    — Items needing CEO decision
-  DISPATCH_TODAY.md  — Today's assignments
+  PIPELINE.md        -- All products and their current phase
+  HALT.md            -- Emergency stop system
+  CEO_BLOCKERS.md    -- Items requiring human decision
 
 products/{name}/
-  CLAUDE.md          — Product-specific rules
-  STATE.md           — Progress, bugs, metrics
-  mvp-specs/         — What to build
+  CLAUDE.md          -- Product-specific rules and stack
+  STATE.md           -- Progress, bugs, last_actor, metrics
+  DISPATCH.md        -- Cross-department handoffs
+  mvp-specs/         -- What to build (specifications)
 ```
 
-See [core/state-schema.md](core/state-schema.md) for full details.
+Build/QA alternation is enforced via the `last_actor` field in STATE.md: if the last actor was the Builder, QA runs next, and vice versa. This guarantees every build session is followed by a quality check.
 
-### Agents
+See [core/state-schema.md](core/state-schema.md) for the full schema.
 
-Each agent is a markdown file that defines a role:
+### Agent Architecture
+
+Each agent is defined as a markdown file with YAML frontmatter:
 
 ```yaml
 ---
@@ -150,36 +140,76 @@ expected_frequency: "hourly"
 You are the Builder. Your job is to write code, deploy, and maintain products.
 
 ## I DO:
-- Write code, run migrations, deploy
+- Write code from specifications
+- Run database migrations
+- Deploy to production
 
 ## I DO NOT:
-- Create marketing content (that's /marketer)
+- Create marketing content (that is the Marketer)
+- Make spending decisions (requires CEO approval)
 ```
+
+PA·co supports 3-16 agents organized into departments. A typical production setup uses 8-12 agents across 5 departments: Executive, Engineering, Quality & Security, Intelligence & Strategy, and Growth & Revenue.
 
 See [core/agent-schema.md](core/agent-schema.md) for the full schema.
 
 ### Scheduling
 
-Agents run on schedules via Claude Code scheduled tasks or hooks:
+Agents run on schedules via Claude Code scheduled tasks:
 
-| Type | Example |
-|------|---------|
-| Jornada (work hours) | Standup 8am, Refine phases 8:30-10:30am |
-| 24/7 Automation | Build sessions hourly, QA alternating, email relay |
+| Schedule type | Examples |
+|--------------|---------|
+| Work hours (jornada) | Standup at 8am, Refine phases 8:30-10:30am, Competitive Defense at 2pm |
+| 24/7 automation | Build sessions hourly, QA alternating, email relay |
 | Weekly | Friday reports, open source sync |
 
+Schedules include smart-skip logic: if there is nothing to do, the agent exits silently instead of generating empty output.
+
 ### Emergency Halt
+
+The HALT system provides instant, global control over all agent operations:
 
 ```markdown
 # state/HALT.md
 ## Current: CLEAR
 ```
 
-Write "HALT [product]" or "HALT ALL" to stop operations. Only the CEO can halt/resume.
+Write `HALT [product]` or `HALT ALL` to stop operations instantly. Every schedule reads HALT.md before doing anything. Only the CEO (human operator) can halt or resume.
+
+---
+
+## PA·co vs CrewAI vs LangGraph vs AutoGen
+
+PA·co Framework takes a fundamentally different approach from Python-based multi-agent frameworks. While CrewAI, LangGraph, and AutoGen require writing code to define agents and workflows, PA·co uses markdown files exclusively.
+
+| Feature | PA·co Framework | CrewAI | LangGraph | AutoGen (retired) |
+|---------|----------------|--------|-----------|-------------------|
+| **Language required** | None (markdown only) | Python | Python | Python |
+| **Setup time** | 5 minutes | Hours | Hours | Hours |
+| **Product lifecycle management** | 7-phase workflow with gates | No built-in workflow | State machine (manual) | No built-in workflow |
+| **Context management** | 4-layer Context Engineering | In-memory / optional RAG | State machine variables | Message history |
+| **Quality gates** | Built-in at every phase transition | None | None | None |
+| **Emergency halt** | Built-in (HALT.md) | None | None | None |
+| **Knowledge persistence** | Vector DB + markdown files | Optional RAG | None built-in | None built-in |
+| **Human approval gates** | CEO Gate built into workflow | None | Interrupt points (manual) | Human-in-the-loop (manual) |
+| **Agent coordination** | File-based state (no race conditions) | Task delegation | Graph edges | Group chat / nested |
+| **Cost model** | $0 (MIT, uses your Claude subscription) | $99-$120K/year | $39/user/mo + per-node | Free (retired) |
+| **LLM support** | Claude Code only | Multi-LLM | Multi-LLM | Multi-LLM |
+| **Best for** | Autonomous operations with governance | Python developers, enterprise teams | Complex agent graphs | Legacy projects |
+
+**When to choose PA·co:** You want structured, governed multi-agent operations without writing code. You use Claude Code. You need a product lifecycle (not just task execution). You want human-in-the-loop by default.
+
+**When to choose CrewAI:** You need multi-LLM support. Your team writes Python. You need enterprise features and support.
+
+**When to choose LangGraph:** You need fine-grained control over agent execution graphs. You are building complex, branching agent workflows in Python.
+
+For a detailed comparison, see [docs/comparisons.md](docs/comparisons.md).
+
+---
 
 ## Templates
 
-### Free Templates (included in repo)
+### Free Templates (included)
 
 | Template | Agents | Best for |
 |----------|--------|----------|
@@ -198,61 +228,52 @@ Industry-specific templates with specialized agents, workflows, and dispatch pat
 | **Dev Team** | 6 (code review, QA, security, DevOps) | $79 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/mexvb) |
 | **Complete Bundle** | All 4 + future templates | $249 | [Buy on Gumroad](https://penguinmaster06.gumroad.com/l/weome) |
 
-## Comparison
+---
 
-| Feature | PA·co v2 | CrewAI | LangGraph | AutoGen |
-|---------|----------|--------|-----------|---------|
-| Language needed | None (markdown) | Python | Python | Python |
-| Setup time | 5 minutes | Hours | Hours | Hours |
-| Product lifecycle | 7-phase workflow | None | None | None |
-| Context management | 4-layer engineering | In-memory/DB | State machine | Messages |
-| Quality gates | Built-in per phase | None | None | None |
-| Emergency halt | Built-in | None | None | None |
-| Knowledge persistence | Vector DB + files | RAG (optional) | None | None |
-| CEO approval gates | Built-in | None | None | None |
-| Cost | $0 extra | API costs | API costs | API costs |
+## Battle-Tested in Production
 
-## Battle-Tested
-
-PA·co isn't theoretical. We built and operate [Penguin Alley](https://penguinalley.com) entirely with PA·co:
+PA·co Framework is not theoretical. It runs [Penguin Alley's](https://penguinalley.com) entire operations:
 
 - **12 agents** across 5 departments + Executive
-- **7-phase workflow** running autonomously 24/7
-- **19 scheduled tasks** covering research, build, QA, distribution, and more
+- **19 scheduled tasks** running autonomously 24/7
 - **4-layer Context Engineering** with pgvector semantic search
-- **Multiple products** shipped through the full pipeline
-- **$0 infrastructure cost** — all free tiers
+- **Multiple products** shipped through the full 7-phase pipeline
+- **$0 infrastructure cost** -- built entirely on free tiers
 
-Every pattern in this framework comes from real production experience.
+Every pattern in this framework comes from real production experience. The 7-phase workflow, Build/QA alternation, emergency halt system, and Context Engineering layers were all developed and refined through shipping real products.
+
+---
 
 ## Core Schemas
 
 | Schema | What it defines |
 |--------|----------------|
-| [agent-schema.md](core/agent-schema.md) | Agent file structure and design principles |
-| [context-engineering.md](core/context-engineering.md) | 4-layer context system |
-| [workflow-schema.md](core/workflow-schema.md) | 7-phase product workflow |
+| [agent-schema.md](core/agent-schema.md) | Agent file structure, roles, jurisdictions |
+| [context-engineering.md](core/context-engineering.md) | 4-layer context system specification |
+| [workflow-schema.md](core/workflow-schema.md) | 7-phase product lifecycle |
 | [state-schema.md](core/state-schema.md) | Product state and pipeline tracking |
-| [dispatch-schema.md](core/dispatch-schema.md) | v1 dispatch system (still works for simple setups) |
-| [memory-schema.md](core/memory-schema.md) | File-based memory (v1, fallback for no vector DB) |
+| [dispatch-schema.md](core/dispatch-schema.md) | Cross-department handoff system |
+| [memory-schema.md](core/memory-schema.md) | File-based knowledge persistence |
+| [schedule-schema.md](core/schedule-schema.md) | Agent scheduling patterns |
 | [executive-orders-template.md](core/executive-orders-template.md) | CEO directives template |
 
 ## Documentation
 
-- [Getting Started](docs/getting-started.md) — Full setup guide
-- [Concepts](docs/concepts.md) — How departments, context, and workflows work
-- [Adding Agents](docs/adding-agents.md) — Create custom agents for your needs
-- [FAQ](docs/faq.md) — Common questions
+- [Getting Started](docs/getting-started.md) -- Full setup guide
+- [Concepts](docs/concepts.md) -- Departments, context layers, and workflows
+- [Adding Agents](docs/adding-agents.md) -- Create custom agents
+- [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
+- [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
 
 ## Requirements
 
 - **Claude Code** (CLI, Desktop app, VS Code extension, or JetBrains extension)
-- **Claude Pro/Max** for scheduled tasks (optional — can run agents manually)
+- **Claude Pro/Max** for scheduled tasks (optional -- can run agents manually)
 - Any project type: SaaS, agency, content, dev tools, research, etc.
 
 ## License
 
-MIT — use it however you want.
+MIT -- use it however you want.
 
 ## Contributing
 
@@ -265,4 +286,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 
 ---
 
-**Built by [PA·co](https://penguinalley.com) — A Penguin Alley System**
+**Built by [PA·co](https://penguinalley.com) -- A Penguin Alley System**
