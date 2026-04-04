@@ -50,6 +50,7 @@ PA·co uses a file-based architecture where each AI agent reads markdown files t
 | **Emergency halt system** | Instantly pause any product or all operations with a single markdown edit |
 | **Human-in-the-loop governance** | CEO approval gates for critical decisions; agents operate autonomously within defined boundaries |
 | **Tool whitelisting** | Per-agent tool restrictions (allow/deny lists) enforcing least-privilege access, compatible with Anthropic Subagents API |
+| **Subagents API integration** | Spawn PA·co agents programmatically via the [Claude Agent SDK](docs/subagents.md) with isolated contexts, parallel execution, and enforced tool restrictions |
 | **Zero-code setup** | Everything is configured through markdown files -- no Python, no YAML configs, no infrastructure code |
 
 ---
@@ -279,6 +280,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [Concepts](docs/concepts.md) -- Departments, context layers, and workflows
 - [Adding Agents](docs/adding-agents.md) -- Create custom agents
 - [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
+- [Subagents API](docs/subagents.md) -- Spawn PA·co agents via the Claude Agent SDK
 - [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
 - [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
 

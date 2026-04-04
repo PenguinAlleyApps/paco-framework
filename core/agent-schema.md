@@ -117,6 +117,20 @@ tools_allowed: ["Read", "Glob", "Grep"]  # Auditor: read-only, no writes
 2. **Blast radius.** A researcher with Bash access could accidentally run destructive commands.
 3. **Subagents API parity.** When spawning agents via the Anthropic Subagents API, `tools_allowed` maps directly to the API's `allowed_tools` parameter. PA·co agents are subagent-ready.
 
+## SDK compatibility
+
+PA·co agent schemas are designed to be compatible with the Anthropic Claude Agent SDK's `AgentDefinition`. You can load any PA·co agent file and spawn it as an SDK subagent:
+
+| Agent schema field | SDK `AgentDefinition` field | Notes |
+|---|---|---|
+| `name` | key in `agents` dict | The agent name becomes the dict key |
+| `description` | `description` | SDK uses this to decide when to invoke |
+| Body content | `prompt` | The full markdown body becomes the prompt |
+| `model` | `model` | `"opus"`, `"sonnet"`, `"haiku"` |
+| `tools` / `tools_allowed` / `tools_denied` | `tools` | Resolve using the logic above, pass result as `tools` |
+
+See [docs/subagents.md](../docs/subagents.md) for full examples, migration guide, and parallel execution patterns.
+
 ## Design principles:
 - **Jurisdiction prevents overlap.** Two agents should never do the same thing.
 - **Process is explicit.** The agent should know exactly what to do without interpretation.

@@ -355,4 +355,24 @@ Check the metadata on your stored entries. Each entry should have type (lesson, 
 
 ---
 
-Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
+## Claude Agent SDK & Subagents
+
+### Can I spawn PA·co agents programmatically?
+
+Yes. The Claude Agent SDK lets you define PA·co agents as `AgentDefinition` objects and spawn them via `query()`. Each agent gets isolated context, restricted tools, and can run in parallel. Your PA·co agent schema fields (`tools_allowed`, `tools_denied`, `model`, etc.) map directly to SDK fields. See [docs/subagents.md](subagents.md) for the full mapping and examples.
+
+### Do I need the SDK to use PA·co?
+
+No. PA·co's default mode is file-based: agents are `.claude/agents/*.md` files triggered by Claude Code sessions or scheduled tasks. The SDK is an optional integration for custom applications, CI/CD pipelines, or when you need programmatic control over agent spawning.
+
+### Can SDK subagents use PA·co's dispatch coordination?
+
+Yes. Subagents read and write files like any Claude Code session. They coordinate through the same STATE.md, PIPELINE.md, and dispatch files. The SDK adds a programmatic spawn mechanism; the coordination patterns (turn-based alternation, cross-department handoffs, escalation chains) remain file-based.
+
+### Do SDK subagents enforce tool restrictions?
+
+Yes, at the API level. When you pass `tools=["Read", "Glob", "Grep"]` to an `AgentDefinition`, the subagent physically cannot call Edit, Write, or Bash. This is stronger than file-based tool declarations, which rely on the agent following its instructions.
+
+---
+
+Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Subagents API](subagents.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
