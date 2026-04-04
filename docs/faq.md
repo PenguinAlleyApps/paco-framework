@@ -101,6 +101,10 @@ The state management system is designed to prevent this. The rule: agents check 
 
 The CEO is always the tiebreaker.
 
+### How do I restrict which tools an agent can use?
+
+Use the `tools_allowed` and `tools_denied` fields in the agent's YAML frontmatter. `tools_allowed` is a strict whitelist (only those tools are available). `tools_denied` blocks specific tools while keeping the rest. Common pattern: auditors get `tools_allowed: ["Read", "Glob", "Grep"]` (read-only), researchers get `tools_denied: ["Write", "Edit"]` (no file modification). This maps to the Anthropic Subagents API's per-agent tool restrictions. See `core/agent-schema.md` for resolution logic and patterns.
+
 ### Can agents create other agents?
 
 Yes. In PA·co production, agents have created new sub-agents, modified existing agents, and updated CLAUDE.md -- all autonomously. However, structural changes like adding agents should be reviewed by the orchestrator during standup so the system stays coherent.

@@ -49,6 +49,7 @@ PA·co uses a file-based architecture where each AI agent reads markdown files t
 | **Quality gates** | Mandatory checks at every phase transition, preventing defects from propagating |
 | **Emergency halt system** | Instantly pause any product or all operations with a single markdown edit |
 | **Human-in-the-loop governance** | CEO approval gates for critical decisions; agents operate autonomously within defined boundaries |
+| **Tool whitelisting** | Per-agent tool restrictions (allow/deny lists) enforcing least-privilege access, compatible with Anthropic Subagents API |
 | **Zero-code setup** | Everything is configured through markdown files -- no Python, no YAML configs, no infrastructure code |
 
 ---
@@ -135,6 +136,7 @@ Each agent is defined as a markdown file with YAML frontmatter:
 name: "Builder"
 department: "engineering"
 expected_frequency: "hourly"
+tools: ["Bash", "Read", "Write", "Glob", "Grep"]
 ---
 
 You are the Builder. Your job is to write code, deploy, and maintain products.
@@ -151,7 +153,20 @@ You are the Builder. Your job is to write code, deploy, and maintain products.
 
 PA·co supports 3-16 agents organized into departments. A typical production setup uses 8-12 agents across 5 departments: Executive, Engineering, Quality & Security, Intelligence & Strategy, and Growth & Revenue.
 
-See [core/agent-schema.md](core/agent-schema.md) for the full schema.
+#### Tool Whitelisting
+
+Each agent can declare which tools it is allowed or denied. This enforces least-privilege access and maps directly to the Anthropic Subagents API's per-agent tool restrictions:
+
+```yaml
+# Auditor: read-only, cannot modify code it reviews
+tools_allowed: ["Read", "Glob", "Grep"]
+
+# Researcher: can search and read, but not modify files
+tools: ["Read", "Glob", "Grep", "WebSearch", "Bash"]
+tools_denied: ["Write", "Edit"]
+```
+
+See [core/agent-schema.md](core/agent-schema.md) for the full schema, resolution logic, and common patterns.
 
 ### Scheduling
 
@@ -192,6 +207,7 @@ PA·co Framework takes a fundamentally different approach from Python-based mult
 | **Emergency halt** | Built-in (HALT.md) | None | None | None |
 | **Knowledge persistence** | Vector DB + markdown files | Optional RAG | None built-in | None built-in |
 | **Human approval gates** | CEO Gate built into workflow | None | Interrupt points (manual) | Human-in-the-loop (manual) |
+| **Per-agent tool restrictions** | Built-in (tools_allowed/tools_denied) | None | None | None |
 | **Agent coordination** | File-based state (no race conditions) | Task delegation | Graph edges | Group chat / nested |
 | **Cost model** | $0 (MIT, uses your Claude subscription) | $99-$120K/year | $39/user/mo + per-node | Free (retired) |
 | **LLM support** | Claude Code only | Multi-LLM | Multi-LLM | Multi-LLM |

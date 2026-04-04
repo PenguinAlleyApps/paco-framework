@@ -211,6 +211,7 @@ When to add: B2B outreach becomes a real focus.
 ```yaml
 department: "growth"
 expected_frequency: "daily"
+tools_denied: ["Write"]  # Communicates via dispatch, doesn't edit source code
 ```
 
 Handles: prospecting, outreach sequences, pipeline tracking, partnership conversations.
@@ -235,6 +236,7 @@ When to add: you have a production product with real user data.
 ```yaml
 department: "quality-security"
 expected_frequency: "daily"
+tools_denied: ["Write", "Edit"]  # Reports vulnerabilities, never patches them
 ```
 
 Handles: vulnerability scanning, dependency audits, threat modeling, incident response.
@@ -253,6 +255,8 @@ Does NOT: fix the bugs it finds (reports to builder), write features.
 **Wrong department.** Governance agents (legal, finance) should not write to engineering dispatch, and vice versa. Keep cross-department communication in GENERAL.md.
 
 **Expecting agents to find their own tasks.** New agents need tasks assigned to them via dispatch before they'll do anything useful. Run a standup after adding a new agent so the orchestrator populates its queue.
+
+**No tool restrictions.** Every agent should declare `tools_allowed` or `tools_denied`. An auditor that can edit the code it audits is a conflict of interest. A researcher with Write access could accidentally overwrite files. Use the tool whitelisting fields in the schema (`tools_allowed`, `tools_denied`) to enforce least privilege. See [core/agent-schema.md](../core/agent-schema.md) for patterns.
 
 ---
 
