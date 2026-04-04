@@ -310,6 +310,10 @@ See [comparisons.md](comparisons.md) for a detailed comparison.
 
 LangGraph models agent workflows as directed graphs in Python with fine-grained control over execution flow. PA·co uses a fixed 7-phase workflow with quality gates. LangGraph is more flexible but requires more setup. PA·co is more opinionated but works out of the box.
 
+### Does PA·co support the A2A (Agent-to-Agent) protocol?
+
+PA·co solves the same coordination problem as Google's A2A protocol using file-based patterns instead of runtime message passing. Agents coordinate through shared state files (turn-based alternation, cross-department handoffs, escalation chains, pipeline phase gates, and priority overrides). If you need to integrate with external A2A-compatible agents, build a bridge agent that translates between runtime messages and PA·co's file-based state. Full details: [A2A Protocol](a2a-protocol.md).
+
 ### Can I use PA·co alongside other frameworks?
 
 Not recommended. PA·co and other multi-agent frameworks solve the same coordination problem. Running both creates conflicting state management and coordination overhead. Pick one approach.
@@ -351,4 +355,4 @@ Check the metadata on your stored entries. Each entry should have type (lesson, 
 
 ---
 
-Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
+Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)

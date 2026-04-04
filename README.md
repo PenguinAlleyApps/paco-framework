@@ -208,7 +208,7 @@ PA·co Framework takes a fundamentally different approach from Python-based mult
 | **Knowledge persistence** | Vector DB + markdown files | Optional RAG | None built-in | None built-in |
 | **Human approval gates** | CEO Gate built into workflow | None | Interrupt points (manual) | Human-in-the-loop (manual) |
 | **Per-agent tool restrictions** | Built-in (tools_allowed/tools_denied) | None | None | None |
-| **Agent coordination** | File-based state (no race conditions) | Task delegation | Graph edges | Group chat / nested |
+| **Agent coordination (A2A)** | [File-based A2A](docs/a2a-protocol.md) (5 patterns, no infra) | Runtime A2A + task delegation | Graph edges | Group chat / nested |
 | **Cost model** | $0 (MIT, uses your Claude subscription) | $99-$120K/year | $39/user/mo + per-node | Free (retired) |
 | **LLM support** | Claude Code only | Multi-LLM | Multi-LLM | Multi-LLM |
 | **Best for** | Autonomous operations with governance | Python developers, enterprise teams | Complex agent graphs | Legacy projects |
@@ -278,6 +278,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [Getting Started](docs/getting-started.md) -- Full setup guide
 - [Concepts](docs/concepts.md) -- Departments, context layers, and workflows
 - [Adding Agents](docs/adding-agents.md) -- Create custom agents
+- [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
 - [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
 - [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
 
