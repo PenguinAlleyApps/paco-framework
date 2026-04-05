@@ -277,6 +277,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 ## Documentation
 
 - [Getting Started](docs/getting-started.md) -- Full setup guide
+- [Architecture](docs/architecture.md) -- Technical architecture, context layers, and system design
 - [Concepts](docs/concepts.md) -- Departments, context layers, and workflows
 - [Adding Agents](docs/adding-agents.md) -- Create custom agents
 - [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
