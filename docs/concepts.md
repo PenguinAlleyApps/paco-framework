@@ -279,4 +279,4 @@ No agent has to know what the others are doing in real time. The dispatch files 
 
 ---
 
-Next: [Architecture](architecture.md) — technical system design | [A2A Protocol](a2a-protocol.md) — how agents coordinate work | [Subagents API](subagents.md) — spawn agents via the Claude Agent SDK | [Adding Agents](adding-agents.md) — create custom agents for your needs.
+Next: [Architecture](architecture.md) — technical system design | [A2A Protocol](a2a-protocol.md) — how agents coordinate work | [Subagents API](subagents.md) — spawn agents via the Claude Agent SDK | [MCP Transports](mcp-transports.md) — connect to external tools | [Adding Agents](adding-agents.md) — create custom agents for your needs.

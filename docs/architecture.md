@@ -297,7 +297,7 @@ See [subagents.md](subagents.md) for full integration guide.
 
 ### MCP servers
 
-PA·co agents use MCP (Model Context Protocol) servers for external tool access. Tool access is controlled per-agent via `tools_allowed` and `tools_denied` in the agent definition.
+PA·co agents use MCP (Model Context Protocol) servers for external tool access. Tool access is controlled per-agent via `tools_allowed` and `tools_denied` in the agent definition. See [MCP Transports](mcp-transports.md) for transport types (Stdio, SSE, Streamable HTTP), configuration, and security guidelines.
 
 ### Scheduled tasks
 
@@ -325,5 +325,6 @@ Claude Code scheduled tasks trigger agent sessions on cron schedules. Each sched
 - [Adding Agents](adding-agents.md) -- Create custom agents
 - [A2A Protocol](a2a-protocol.md) -- Agent coordination patterns
 - [Subagents API](subagents.md) -- Claude Agent SDK integration
+- [MCP Transports](mcp-transports.md) -- External tool access via MCP
 - [FAQ](faq.md) -- Common questions
 - [Comparisons](comparisons.md) -- PA·co vs other frameworks

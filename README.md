@@ -282,6 +282,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [Adding Agents](docs/adding-agents.md) -- Create custom agents
 - [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
 - [Subagents API](docs/subagents.md) -- Spawn PA·co agents via the Claude Agent SDK
+- [MCP Transports](docs/mcp-transports.md) -- Connect agents to external tools via MCP
 - [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
 - [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
 

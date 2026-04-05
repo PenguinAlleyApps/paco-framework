@@ -373,6 +373,24 @@ Yes. Subagents read and write files like any Claude Code session. They coordinat
 
 Yes, at the API level. When you pass `tools=["Read", "Glob", "Grep"]` to an `AgentDefinition`, the subagent physically cannot call Edit, Write, or Bash. This is stronger than file-based tool declarations, which rely on the agent following its instructions.
 
+## MCP and External Tools
+
+### What is MCP?
+
+MCP (Model Context Protocol) is Anthropic's open standard for connecting AI agents to external tools and data sources. Claude Code supports MCP natively. In PA·co, MCP servers extend agent capabilities beyond built-in tools -- a Builder can manage databases via Supabase MCP, deploy via Cloudflare MCP, or process payments via Stripe MCP.
+
+### Which MCP transport should I use?
+
+For most PA·co deployments, use **Stdio** (local process). It's the simplest, most secure, and lowest-latency option. Use SSE or Streamable HTTP only when the MCP server must run on a remote machine or as a shared service. See [docs/mcp-transports.md](mcp-transports.md) for the full decision tree.
+
+### Can I restrict which MCP tools each agent uses?
+
+Yes. MCP tools are namespaced as `mcp__[server]__[tool]`. Use `tools_allowed` in your agent definition to whitelist specific MCP tools, just like built-in tools. An auditor agent can be restricted to read-only MCP operations while the builder gets full access.
+
+### How do I add an MCP server to my PA·co project?
+
+Add the server configuration to `.claude/settings.json` under `mcpServers`. Use `${VAR_NAME}` syntax for secrets. Then verify with `/mcp` in Claude Code. See [docs/mcp-transports.md](mcp-transports.md) for configuration examples.
+
 ---
 
-Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Subagents API](subagents.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
+Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Subagents API](subagents.md) | [MCP Transports](mcp-transports.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
