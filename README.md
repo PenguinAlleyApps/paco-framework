@@ -51,6 +51,7 @@ PA·co uses a file-based architecture where each AI agent reads markdown files t
 | **Human-in-the-loop governance** | CEO approval gates for critical decisions; agents operate autonomously within defined boundaries |
 | **Tool whitelisting** | Per-agent tool restrictions (allow/deny lists) enforcing least-privilege access, compatible with Anthropic Subagents API |
 | **Subagents API integration** | Spawn PA·co agents programmatically via the [Claude Agent SDK](docs/subagents.md) with isolated contexts, parallel execution, and enforced tool restrictions |
+| **Pipeline visualization** | [ASCII DAG](docs/pipeline-visualization.md) shows where every product sits in the 7-phase workflow -- run `python tools/pipeline-viz.py` for an instant snapshot |
 | **Zero-code setup** | Everything is configured through markdown files -- no Python, no YAML configs, no infrastructure code |
 
 ---
@@ -283,6 +284,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
 - [Subagents API](docs/subagents.md) -- Spawn PA·co agents via the Claude Agent SDK
 - [MCP Transports](docs/mcp-transports.md) -- Connect agents to external tools via MCP
+- [Pipeline Visualization](docs/pipeline-visualization.md) -- ASCII DAG of your product pipeline
 - [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
 - [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
 

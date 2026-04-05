@@ -212,6 +212,10 @@ Phase transitions happen when the gatekeeper for that phase approves the transit
 
 PA·co enforces one product in active development (Phases 1-6) at a time to maintain focus. Multiple products can be in Evolve (Phase 7) simultaneously. This prevents context switching and ensures each product gets full attention through the pipeline.
 
+### Can I visualize the pipeline?
+
+Yes. Run `python tools/pipeline-viz.py` to generate an ASCII DAG showing all products and their current phases. It reads `state/PIPELINE.md` and renders a directed graph with status indicators (active, blocked, pending). Use `--compact` for minimal output or `--history` to include completed and killed products. See [docs/pipeline-visualization.md](pipeline-visualization.md) for full details.
+
 ---
 
 ## Running the System
