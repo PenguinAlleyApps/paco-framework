@@ -161,6 +161,12 @@ The minimum useful set:
 
 ---
 
+## Optional: Add semantic memory with pgvector
+
+When your `memory/lessons-learned.md` grows past ~100 entries, upgrade to vector-based retrieval. The [context-engineering template](../templates/context-engineering/) includes SQL schema, ingestion, and search scripts for Supabase pgvector. Setup takes 5 minutes.
+
+---
+
 ## What to expect in the first week
 
 | Day | What happens |

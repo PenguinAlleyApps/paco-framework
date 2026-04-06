@@ -233,6 +233,7 @@ For a detailed comparison, see [docs/comparisons.md](docs/comparisons.md).
 |----------|--------|----------|
 | `solo-founder` | 4 (orchestrator, builder, devops, marketer) | Solo builders shipping fast |
 | `startup` | 8 (adds QA, researcher, strategist, sales) | Small teams with product-market fit goals |
+| `context-engineering` | N/A (add-on) | Adding pgvector semantic memory to any PA·co setup |
 
 ### Premium Templates
 
@@ -268,6 +269,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 |--------|----------------|
 | [agent-schema.md](core/agent-schema.md) | Agent file structure, roles, jurisdictions |
 | [context-engineering.md](core/context-engineering.md) | 4-layer context system specification |
+| [context-engineering template](templates/context-engineering/) | pgvector setup: schema, ingest, search scripts |
 | [workflow-schema.md](core/workflow-schema.md) | 7-phase product lifecycle |
 | [state-schema.md](core/state-schema.md) | Product state and pipeline tracking |
 | [dispatch-schema.md](core/dispatch-schema.md) | Cross-department handoff system |

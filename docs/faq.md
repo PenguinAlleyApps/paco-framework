@@ -158,7 +158,7 @@ No. PA·co works without a vector database using markdown files for all knowledg
 
 PA·co uses Supabase's pgvector extension for semantic search. Knowledge is embedded and stored with metadata (type, scope, source). When an agent needs context, a search query returns the 5-10 most relevant results. This is Layer 3 (Relevant) of Context Engineering.
 
-Setup requires a Supabase project with pgvector enabled. See [core/context-engineering.md](../core/context-engineering.md) for the full specification.
+Setup requires a Supabase project with pgvector enabled. See [templates/context-engineering/](../templates/context-engineering/) for the complete setup guide with SQL schema, ingestion and search scripts. For the conceptual specification, see [core/context-engineering.md](../core/context-engineering.md).
 
 ### What is the difference between memory files and vector database?
 

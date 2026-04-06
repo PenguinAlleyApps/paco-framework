@@ -106,7 +106,7 @@ memory/
   market-intel/          — Research findings
 ```
 
-This works for small teams. As knowledge grows past ~100 entries, migrate to a vector DB for better retrieval.
+This works for small teams. As knowledge grows past ~100 entries, migrate to a vector DB for better retrieval. See [templates/context-engineering/](../templates/context-engineering/) for a complete pgvector setup guide with SQL schema, ingestion, and search scripts.
 
 ## Rewrite vs Accumulate
 
