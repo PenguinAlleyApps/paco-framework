@@ -88,7 +88,7 @@ Departments group related agents and define coordination boundaries. A typical s
 - **Intelligence and Strategy** -- researcher, strategist
 - **Growth and Revenue** -- marketer, sales
 
-Departments matter because they define who talks to whom. Agents within a department share dispatch files. Cross-department coordination goes through the orchestrator or general dispatch.
+Departments matter because they define who talks to whom. Agents within a department share state files and product context. Cross-department coordination goes through the orchestrator, DISPATCH.md handoffs, or CEO_BLOCKERS.md for escalations.
 
 ### What if two agents conflict on a decision?
 
@@ -222,7 +222,7 @@ Yes. Run `python tools/pipeline-viz.py` to generate an ASCII DAG showing all pro
 
 ### How do I know if an agent is stuck?
 
-Each agent updates dispatch files with activity logs at session end. During standup, the orchestrator checks last heartbeat vs expected frequency. If an agent that runs daily has not logged activity in 48 hours, the orchestrator flags it.
+Each agent updates STATE.md with progress and last_actor at session end. During standup, the orchestrator checks last_updated timestamps vs expected frequency. If an agent that runs daily has not logged activity in 48 hours, the orchestrator flags it.
 
 ### How do I give agents new instructions?
 
@@ -367,7 +367,7 @@ Yes. The Claude Agent SDK lets you define PA·co agents as `AgentDefinition` obj
 
 ### Do I need the SDK to use PA·co?
 
-No. PA·co's default mode is file-based: agents are `.claude/agents/*.md` files triggered by Claude Code sessions or scheduled tasks. The SDK is an optional integration for custom applications, CI/CD pipelines, or when you need programmatic control over agent spawning.
+No. PA·co's default mode is file-based: agents are `agents/*.md` files triggered by Claude Code sessions or scheduled tasks. The SDK is an optional integration for custom applications, CI/CD pipelines, or when you need programmatic control over agent spawning.
 
 ### Can SDK subagents use PA·co's dispatch coordination?
 

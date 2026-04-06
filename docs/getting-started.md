@@ -6,8 +6,8 @@ Get your autonomous multi-agent system running in 10 minutes.
 
 ## Prerequisites
 
-- **Claude Code** — CLI (`npm install -g @anthropic-ai/claude-code`), Desktop app, or VS Code extension
-- **Claude account** — Any plan works for manual agent runs. Claude Desktop MAX ($100/mo) required for scheduled autonomous tasks.
+- **Claude Code** — CLI (`npm install -g @anthropic-ai/claude-code`), Desktop app, VS Code, or JetBrains extension
+- **Claude account** — Any plan works for manual agent runs. Claude MAX ($200/mo) required for scheduled autonomous tasks.
 - **Git** — to clone the framework
 
 ---
@@ -67,8 +67,8 @@ Select the departments relevant to your stage:
 **5. Model preference?**
 Balanced is the default (Opus for auditor/security, Sonnet for everything else). Cost-conscious (all Sonnet) works fine for early-stage.
 
-**6. Do you have Claude Desktop MAX?**
-If yes, you get scheduled tasks. If no, you trigger agents manually.
+**6. Do you have Claude MAX?**
+If yes, you get scheduled tasks for autonomous operation. If no, you trigger agents manually.
 
 ---
 
@@ -77,22 +77,24 @@ If yes, you get scheduled tasks. If no, you trigger agents manually.
 After answering, Claude Code generates your system. Verify these files exist:
 
 ```
-CLAUDE.md                       ← Your master rules file
-dispatch/
-  HALT.md                       ← Emergency stop
-  GENERAL.md                    ← Cross-department coordination
-  engineering.md                ← (or your selected departments)
-memory/
-  MEMORY.md                     ← Knowledge index
-  lessons-learned.md            ← Institutional memory (starts empty)
-.claude/agents/
-  paco.md                       ← Orchestrator
+CLAUDE.md                       ← Master rules file (max 150 lines)
+agents/
+  paco.md                       ← Orchestrator agent
   builder.md                    ← (and other selected agents)
-docs/
-  executive-orders.md           ← Your non-negotiable rules
-  quality-gates.md              ← Quality checklists
-orchestrator/
-  active-schedules.md           ← (if Claude Desktop MAX)
+state/
+  PIPELINE.md                   ← All products and their phases
+  HALT.md                       ← Emergency stop register
+  CEO_BLOCKERS.md               ← Items requiring your decision
+products/
+  _template/                    ← Template for new products
+    CLAUDE.md                   ← Product-specific rules
+    STATE.md                    ← Progress, bugs, last_actor
+    DISPATCH.md                 ← Product task queue
+catalogs/
+  sectors.md                    ← Market sectors catalog
+  tech-stacks.md                ← Technology references
+specs/
+  SPEC_TEMPLATE.md              ← Research output template
 ```
 
 If any file is missing, tell Claude Code: "Verify the PA·co setup — check all required files exist."
@@ -120,12 +122,10 @@ Run as /paco — execute the daily standup.
 ```
 
 The orchestrator will:
-1. Read all dispatch files
-2. Check agent health
-3. Review pending tasks
-4. Report what needs to happen next
-
-This takes 1-2 minutes and gives you an immediate picture of your system state.
+1. Read `state/PIPELINE.md` and all product STATE.md files
+2. Check `state/HALT.md` (should be CLEAR)
+3. Review `state/CEO_BLOCKERS.md` for items needing your decision
+4. Report the current system state and what needs to happen next
 
 ---
 
@@ -140,30 +140,38 @@ Run as /researcher — scan for market opportunities in [your space].
 Run as /marketer — create a launch post for [your product].
 ```
 
-Each agent reads its file, reads the dispatch, does its job, and updates the dispatch for the next agent.
+Each agent reads its definition, checks the system state, does its job, and updates the relevant STATE.md for the next agent.
 
 ---
 
-## Optional: Set up scheduled tasks (Claude Desktop MAX only)
+## Optional: Set up scheduled tasks (Claude MAX only)
 
-If you have Claude Desktop MAX, `orchestrator/active-schedules.md` contains ready-to-paste schedule prompts. In Claude Desktop:
+If you have Claude MAX, create scheduled tasks in Claude Code for autonomous operation:
 
-1. Open Settings > Scheduled Tasks
-2. For each schedule in `active-schedules.md`, create a task with:
-   - The prompt from that file
-   - The frequency listed
-   - Keep Awake: ON
+1. Open Claude Code settings or use the scheduled tasks feature
+2. Create tasks for each schedule you need:
+   - Daily standup (e.g., 8:00 AM)
+   - Build session (hourly)
+   - Weekly report (Friday 5 PM)
 
 The minimum useful set:
-- Daily standup (9 AM)
-- Build session (hourly)
-- Weekly report (Friday 5 PM)
+- **Daily standup** — context sync, blocker identification
+- **Build session** (hourly) — continuous development with Build/QA alternation
+- **Weekly report** — CEO summary of the week
+
+Each schedule reads `state/HALT.md` first. If halted, the agent exits silently.
 
 ---
 
 ## Optional: Add semantic memory with pgvector
 
-When your `memory/lessons-learned.md` grows past ~100 entries, upgrade to vector-based retrieval. The [context-engineering template](../templates/context-engineering/) includes SQL schema, ingestion, and search scripts for Supabase pgvector. Setup takes 5 minutes.
+When your system generates enough lessons and decisions that file-based memory becomes unwieldy, upgrade to vector-based retrieval. The [Context Engineering template](../templates/context-engineering/) includes:
+
+- `schema.sql` — pgvector table, match function, and indexes for Supabase
+- `pgvector-ingest.py` — parses markdown frontmatter, generates embeddings, inserts to Supabase
+- `pgvector-search.py` — CLI semantic search with `--type`, `--scope`, and `--limit` filters
+
+This is Layer 3 (Relevant) and Layer 4 (Archive) of the [4-layer Context Engineering](../core/context-engineering.md) system. Setup takes 5 minutes with a free Supabase project.
 
 ---
 
@@ -172,8 +180,8 @@ When your `memory/lessons-learned.md` grows past ~100 entries, upgrade to vector
 | Day | What happens |
 |-----|-------------|
 | Day 1 | Bootstrap complete. First standup. Agents oriented. |
-| Day 2-3 | Builder starts first task. Dispatch fills with activity. |
-| Day 4-5 | Mistakes happen. Agents log them to `lessons-learned.md`. |
+| Day 2-3 | Builder starts first task. STATE.md fills with progress. |
+| Day 4-5 | Build/QA alternation kicks in. Agents catch each other's gaps. |
 | Day 7 | First weekly report. System starts feeling like a real team. |
 
 ---
@@ -187,10 +195,13 @@ Run: `Run as /paco — verify all agent references and fix broken paths.`
 Check jurisdiction sections in both agent files. One needs to explicitly cede that territory to the other. Update both files.
 
 **"Agent keeps forgetting context from last session"**
-Agents rely on dispatch files and memory files for context. Make sure the previous agent updated `dispatch/GENERAL.md` or the relevant department dispatch before ending its session.
+Agents rely on STATE.md and PIPELINE.md for cross-session context (Layer 2: State). Make sure the previous agent updated `products/{name}/STATE.md` before ending its session. For deeper memory, set up pgvector (Layer 3: Relevant).
 
 **"I want to change how an agent behaves"**
-Edit its file in `.claude/agents/`. Changes take effect next session. No restart needed.
+Edit its file in `agents/`. Changes take effect next session. No restart needed.
+
+**"STATE.md or DISPATCH.md is getting too long"**
+These files have hard line limits (STATE: 40 lines, DISPATCH: 100 lines). Archive completed items to vector DB or a lessons file, then rewrite with only current content.
 
 ---
 
