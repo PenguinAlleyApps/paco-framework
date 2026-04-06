@@ -320,6 +320,12 @@ LangGraph models agent workflows as directed graphs in Python with fine-grained 
 
 PA·co solves the same coordination problem as Google's A2A protocol using file-based patterns instead of runtime message passing. Agents coordinate through shared state files (turn-based alternation, cross-department handoffs, escalation chains, pipeline phase gates, and priority overrides). If you need to integrate with external A2A-compatible agents, build a bridge agent that translates between runtime messages and PA·co's file-based state. Full details: [A2A Protocol](a2a-protocol.md).
 
+### AutoGen is in maintenance mode. Should I migrate to PA·co?
+
+If you were using AutoGen with Claude, yes. AutoGen standalone receives no new features since Microsoft merged it into the Microsoft Agent Framework (Azure-centric, Semantic Kernel-based). PA·co is the Claude Code-native alternative with zero-code setup, persistent memory, and built-in governance. See the full [AutoGen Migration Guide](autogen-migration.md) for concept mapping and step-by-step instructions.
+
+If you were using AutoGen with GPT-4 or other models and want to stay multi-LLM, consider CrewAI or LangGraph instead.
+
 ### Can I use PA·co alongside other frameworks?
 
 Not recommended. PA·co and other multi-agent frameworks solve the same coordination problem. Running both creates conflicting state management and coordination overhead. Pick one approach.
@@ -399,4 +405,4 @@ Add the server configuration to `.claude/settings.json` under `mcpServers`. Use 
 
 ---
 
-Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Subagents API](subagents.md) | [MCP Transports](mcp-transports.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md)
+Back to: [Getting Started](getting-started.md) | [Concepts](concepts.md) | [A2A Protocol](a2a-protocol.md) | [Subagents API](subagents.md) | [MCP Transports](mcp-transports.md) | [Adding Agents](adding-agents.md) | [Comparisons](comparisons.md) | [AutoGen Migration](autogen-migration.md)

@@ -213,7 +213,7 @@ PA·co Framework takes a fundamentally different approach from Python-based mult
 | **Agent coordination (A2A)** | [File-based A2A](docs/a2a-protocol.md) (5 patterns, no infra) | Runtime A2A + task delegation | Graph edges | Group chat / nested |
 | **Cost model** | $0 (MIT, uses your Claude subscription) | $99-$120K/year | $39/user/mo + per-node | Free (retired) |
 | **LLM support** | Claude Code only | Multi-LLM | Multi-LLM | Multi-LLM |
-| **Best for** | Autonomous operations with governance | Python developers, enterprise teams | Complex agent graphs | Legacy projects |
+| **Best for** | Autonomous operations with governance | Python developers, enterprise teams | Complex agent graphs | Legacy projects (see [migration guide](docs/autogen-migration.md)) |
 
 **When to choose PA·co:** You want structured, governed multi-agent operations without writing code. You use Claude Code. You need a product lifecycle (not just task execution). You want human-in-the-loop by default.
 
@@ -290,6 +290,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [Pipeline Visualization](docs/pipeline-visualization.md) -- ASCII DAG of your product pipeline
 - [FAQ](docs/faq.md) -- 50+ questions and answers about multi-agent systems
 - [Comparisons](docs/comparisons.md) -- PA·co vs CrewAI vs LangGraph vs AutoGen
+- [AutoGen Migration Guide](docs/autogen-migration.md) -- Migrate from AutoGen (maintenance mode) to PA·co
 
 ## Requirements
 

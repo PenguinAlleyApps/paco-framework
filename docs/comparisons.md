@@ -193,13 +193,16 @@ PA·co's 4-layer Context Engineering is purpose-built for multi-agent systems wh
 
 ### From AutoGen to PA·co
 
-AutoGen was retired by Microsoft in early 2026. If you are migrating:
+AutoGen entered maintenance mode in early 2026 when Microsoft merged it into the Microsoft Agent Framework (AutoGen + Semantic Kernel). AutoGen standalone receives no new features.
 
-1. Map your AutoGen agents to PA·co agent markdown files
-2. Replace group chat coordination with PA·co state management
+For a detailed migration guide with concept mapping, code examples, and step-by-step instructions, see **[AutoGen Migration Guide](autogen-migration.md)**.
+
+Quick summary:
+1. Map AutoGen agents to PA·co agent markdown files
+2. Replace group chat coordination with file-based state management
 3. Convert conversation-based workflows to the 7-phase product lifecycle
-4. Move any persistent state to PA·co STATE.md files
-5. Set up pgvector for knowledge that was previously in message history
+4. Set up pgvector for persistent knowledge (replaces message history)
+5. Configure Claude Code scheduled tasks (replaces external orchestration)
 
 ### From CrewAI to PA·co
 
