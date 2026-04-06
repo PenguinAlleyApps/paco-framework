@@ -186,6 +186,8 @@ Every product goes through seven phases:
 6. **Deploy** -- ship, scan, verify
 7. **Evolve** -- continuous improvement, competitive defense, iteration
 
+See the full [7-Phase Workflow guide](workflow.md) for detailed explanations of each phase.
+
 ### Can I skip phases?
 
 No. The full workflow applies to every product. This is a core design principle. Skipping phases is how bad products ship. The Research phase prevents building solutions to nonexistent problems. The CEO Gate prevents unauthorized work. Quality gates prevent defective code from deploying.

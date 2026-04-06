@@ -101,7 +101,7 @@ RESEARCH → REFINE → POST-REFINE → CEO GATE → DEVELOP → DEPLOY → EVOL
 
 **Key constraint:** Only 1 product in phases 1-6 at a time. Multiple products can be in Evolve simultaneously.
 
-See [workflow-schema.md](../core/workflow-schema.md) for full phase details.
+See the [7-Phase Workflow guide](workflow.md) for a complete walkthrough, or [workflow-schema.md](../core/workflow-schema.md) for the technical schema.
 
 ---
 
@@ -259,7 +259,7 @@ The auditor reads quality gate checklists defined per output type:
 
 A BLOCKER finding means the phase transition is paused until resolved.
 
-See [quality-gates.md](../core/quality-gates-template.md) for checklist templates.
+See [workflow-schema.md](../core/workflow-schema.md) for phase transition rules and gate definitions.
 
 ---
 

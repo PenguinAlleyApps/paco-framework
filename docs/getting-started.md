@@ -17,10 +17,10 @@ Get your autonomous multi-agent system running in 10 minutes.
 ```bash
 # Into an existing project
 cd your-project/
-git clone https://github.com/penguin-alley/paco-framework .paco-framework --depth=1
+git clone https://github.com/PenguinAlleyApps/paco-framework .paco-framework --depth=1
 
 # Or start fresh
-git clone https://github.com/penguin-alley/paco-framework my-project
+git clone https://github.com/PenguinAlleyApps/paco-framework my-project
 cd my-project
 ```
 

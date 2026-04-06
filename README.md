@@ -282,6 +282,7 @@ Every pattern in this framework comes from real production experience. The 7-pha
 - [Getting Started](docs/getting-started.md) -- Full setup guide
 - [Architecture](docs/architecture.md) -- Technical architecture, context layers, and system design
 - [Concepts](docs/concepts.md) -- Departments, context layers, and workflows
+- [7-Phase Workflow](docs/workflow.md) -- Complete guide to the product lifecycle
 - [Adding Agents](docs/adding-agents.md) -- Create custom agents
 - [A2A Protocol](docs/a2a-protocol.md) -- Agent-to-agent coordination patterns
 - [Subagents API](docs/subagents.md) -- Spawn PA·co agents via the Claude Agent SDK
