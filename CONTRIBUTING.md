@@ -63,7 +63,7 @@ Templates are the most valuable contribution. Here is how to create one.
    - Your Claude Code version (CLI, Desktop, or VS Code extension)
    - Which template you were using
 
-For security vulnerabilities, do NOT open a public issue. Email security@penguinalley.com instead.
+For security vulnerabilities, do NOT open a public issue. Email hello@penguinalley.com instead.
 
 ---
 
