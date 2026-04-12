@@ -2,12 +2,12 @@
 
 ![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-Required-blue.svg)
-![Status](https://img.shields.io/badge/Status-v2.0-brightgreen.svg)
-![Agents](https://img.shields.io/badge/Agents-3_to_16+-purple.svg)
+![Status](https://img.shields.io/badge/Status-v2.0.0-brightgreen.svg)
+![Agents](https://img.shields.io/badge/Agents-3_to_22+-purple.svg)
 
 ## What is PA·co Framework?
 
-**PA·co Framework is a markdown-first, zero-code multi-agent operations system for Claude Code.** It enables 3-16 specialized AI agents to coordinate via file-based state management, maintain institutional memory through 4-layer Context Engineering, and operate autonomously with human oversight -- without writing a single line of Python.
+**PA·co Framework is a markdown-first, zero-code multi-agent operations system for Claude Code.** It enables 3-22+ specialized AI agents to coordinate via file-based state management, maintain institutional memory through 4-layer Context Engineering, and operate autonomously with human oversight -- without writing a single line of Python.
 
 PA·co stands for **P**enguin **A**lley **Co**mmander/Officer. It transforms a Claude Code instance into an autonomous team of AI agents that coordinate, learn, and evolve using only markdown files.
 
@@ -43,7 +43,7 @@ PA·co uses a file-based architecture where each AI agent reads markdown files t
 
 | Capability | Description |
 |-----------|-------------|
-| **Multi-agent coordination** | 3-16 specialized AI agents organized into departments, each with clear roles, jurisdictions, and handoff protocols |
+| **Multi-agent coordination** | 3-22+ specialized AI agents organized into 8 departments, each with clear roles, Knowledge Graph navigation, and handoff protocols |
 | **7-phase product workflow** | Structured pipeline from Research to Refine to Post-Refine to CEO Gate to Develop to Deploy to Evolve |
 | **4-layer Context Engineering** | Identity, State, Relevant, Archive -- ensures every agent session receives precisely the context it needs |
 | **Quality gates** | Mandatory checks at every phase transition, preventing defects from propagating |

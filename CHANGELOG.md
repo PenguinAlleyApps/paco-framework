@@ -2,6 +2,32 @@
 
 All notable changes to PA·co Framework will be documented in this file.
 
+## [2.2.0] — 2026-04-12 — v3 Architecture (Colossal Evolution)
+
+### Added
+- **6 new agents** (22 total): Scout (tool discovery), Discovery (client onboarding), Foreman (client builds), Watchman (hackathon monitoring), Pioneer (open source AI), Guardian (system guardrail)
+- **3 new departments** (8 total): Consulting, Operations, plus Governance expanded with Harbor
+- **Knowledge Graph** sections in all agent files — deterministic Layer 3 navigation map (UNTOUCHABLE rule)
+- **Agent Cards** (`agents/cards/`) — JSON capability descriptors for A2A agent discovery
+- **Constitutional AI** principles — 7 core principles for agent self-evaluation
+- **Evaluation Framework** — LLM-as-Judge with dimensions for build/QA/spec/content output
+- **Sunday Debate** schedule — weekly idea competition with 5-dimension scoring
+- **Workflow as Code** pilot — consulting pipeline as executable state machine (`workflow-graph.py`)
+- **Data Flywheel** — `operational_data` table captures agent failures, CEO corrections, lessons
+- **Content Provenance** — metadata layer for all AI-generated content (model, prompt, timestamp, hash)
+- **3 new modules**: Tools Warehouse, Open Source AI Solutions, Games (planning)
+- **11 new wiki topic pages** for v3 modules
+- **Interaction Failure Log** — 10 documented production failures with pattern taxonomy
+
+### Changed
+- **Weekly cycle**: eliminated Week A/B alternation → every week is identical (research + build + distribute)
+- **Agent file limit**: 50 → 55 lines soft limit, with trim hierarchy (UNTOUCHABLE sections defined)
+- **CLAUDE.md**: restructured from 151 → 128 lines with 22 lines headroom
+- **Schedules**: 21 → 28 prompt files (Sunday Debate, Distribution Push, Weekly Build Plan, Research Accumulator, Hackathon Monitor, plus module schedules)
+
+### Context
+PA·co v3 transforms the system from "orchestration that helps build products" to "autonomous company operating system." The restructure was designed by Argus (external auditor) and executed across 5 phases. Phase 0 revealed the UNTOUCHABLE rule: Knowledge Graph sections must never be removed during optimization.
+
 ## [2.1.0] — 2026-04-01 — Schedule System
 
 ### Added
